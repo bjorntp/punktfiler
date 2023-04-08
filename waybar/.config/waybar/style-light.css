@@ -1,0 +1,122 @@
+* {
+  border: none;
+  border-radius: 0px;
+  font-family: "Fira Code";
+  font-size: 14px;
+  min-height: 0;
+  color: #3c3836;
+}
+
+window#waybar {
+  border-bottom-style: inset;
+  border-bottom: 2px solid #076678;
+  /* background: #f9f5d7; */
+  background: #EBDBB3
+}
+
+#workspaces,
+#clock,
+#custom-music,
+#window {
+  font-weight: 800;
+  margin-top: 1px;
+}
+
+#window {
+  margin-left: 5px;
+}
+
+/* Workspace Buttons */
+#workspaces button label {
+  color: #458588;
+}
+
+#workspaces button {
+  color: #458588;
+  border-bottom: 4px solid transparent;
+}
+
+#workspaces button.visible {
+  border-bottom: 4px solid #458588;
+}
+
+#workspaces button.focused,
+#workspaces button.active {
+  color: #b57614;
+  border-bottom: 4px solid #b57614;
+}
+
+#mode {
+  background-color: #9d0006;
+  color: #f9f5d7;
+}
+
+#clock,
+#battery,
+#cpu,
+#memory,
+#network,
+#pulseaudio,
+#tray,
+#mode,
+#idle_inhibitor {
+  padding: 0 5px;
+  margin: 0 5px;
+}
+
+#idle_inhibitor {
+  padding: 0 10px;
+}
+
+#idle_inhibitor.activated {
+  background-color: #8f3f71;
+  color: #f9f5d7;
+}
+
+#custom-music {
+  color: #b16286;
+  margin: 0 15px;
+  padding: 0 20px;
+  border-bottom: 4px solid #b16286;
+}
+
+#clock {
+  margin: 0;
+  color: #427b58;
+  border-bottom: 4px solid #427b58;
+}
+
+#battery {
+  color: #d79921;
+}
+
+#cpu {
+  color: #79740e;
+}
+
+#memory {
+  color: #98971a;
+}
+
+#network {
+  color: #076678;
+}
+
+#network.disconnected {
+  color: #cc241d;
+  border-bottom: 4px solid #cc241d;
+}
+
+#pulseaudio {
+  color: #689d6a;
+}
+
+#pulseaudio.muted {
+  padding: 0 20px;
+  color: #9d0006;
+  border-bottom: 4px solid #9d0006;
+}
+
+#tray {
+  color: #7c6f64;
+}
