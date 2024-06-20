@@ -55,4 +55,4 @@ cp "wallpapers/cat_wall.png" "$_wallpaper" && echo  "Copying wallpaper"
 # sudo cp "./configs/sddm/sddm.conf" "/etc/sddm.conf"
 # sudo rm -r sddm
 
-neofetch
+fastfetch
