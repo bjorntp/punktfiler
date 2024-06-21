@@ -34,3 +34,5 @@ bindkey "^[[3~" delete-char
 git-cmp() {
   git add . && git commit -m "$1" && git push
 }
+
+export EDITOR='nvim'
