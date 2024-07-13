@@ -201,9 +201,6 @@ exec "picom -b"
 # Wallpaper
 exec "feh --bg-scale /home/bjorn/pictures/cat_wall.png"
 
-exec setxkbmap se
-
-
 # Catpuccin Mocha
 set $rosewater #f5e0dc
 set $flamingo  #f2cdcd
