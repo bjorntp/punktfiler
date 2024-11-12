@@ -28,21 +28,21 @@ _home="$HOME/"
 _neovim="$HOME/.config/nvim"
 _zshplugins="$HOME/.local/zsh-plugins/"
 
-mkdir -p "$_i3" "$_rofi" "$_rofi_theme" "$_polybar" "$_picom" "$_kitty" "$_wallpaper" "$_config"
+mkdir -p -v "$_i3" "$_rofi" "$_rofi_theme" "$_polybar" "$_picom" "$_kitty" "$_wallpaper" "$_config"
 echo "Created directories"
 
 # Configs
 if [ $type = "1" ]; then
   echo "Running laptop installation"
-  cp -r "configs/i3/laptop/"* "$_i3" && echo "Copying i3 config"
-  cp -r "configs/polybar/laptop/"* "$_polybar" && echo  "Copying polybar config and scripts"
-  cp "configs/picom/laptop/picom.conf" "$_picom" && echo  "Copying picom config"
+  echo "Copying i3 config" && cp -r "configs/i3/laptop/"* "$_i3"
+  echo  "Copying polybar config and scripts" && cp -r "configs/polybar/laptop/"* "$_polybar"
+  echo  "Copying picom config" && cp "configs/picom/laptop/picom.conf" "$_picom"
   sudo cp "./configs/xorg.conf.d/laptop/40-libinput.conf" "/usr/share/X11/xorg.conf.d/40-libinput.conf"
 elif [ $type = "2" ]; then
   echo "Running desktop installation"
-  cp -r "configs/i3/desktop/"* "$_i3" && echo "Copying i3 config"
-  cp -r "configs/polybar/desktop/"* "$_polybar" && echo  "Copying polybar config and scripts"
-  cp "configs/picom/desktop/picom.conf" "$_picom" && echo  "Copying picom config"
+  echo "Copying i3 config" && cp -r "configs/i3/desktop/"* "$_i3"
+  echo  "Copying polybar config and scripts" && cp -r "configs/polybar/desktop/"* "$_polybar"
+  echo  "Copying picom config" && cp "configs/picom/desktop/picom.conf" "$_picom"
   sudo cp "./configs/xorg.conf.d/desktop/40-libinput.conf" "/usr/share/X11/xorg.conf.d/40-libinput.conf"
 fi
 
@@ -51,17 +51,24 @@ echo "Copying rofi config" && cp "configs/rofi/config.rasi" "$_rofi"
 echo "Copying rofi theme" && -r "configs/rofi/themes/"* "$_rofi_theme" 
 echo "Copying wallpaper" && cp "wallpapers/cat_wall.png" "$_wallpaper" 
 echo "Cloning Neovim config and removing .git file" && git clone git@github.com:bjorntp/neovim.git "$_neovim" && rm "$_neovim/.git"
-echo "Copying zsh config" && cp "configs/zsh/.zshrc" "$_home"
-echo "Cloing zsh plugins from Github"
-git clone --depth=1 https://github.com/romkatv/powerlevel10k.git "$_zshplugins/powerlevel/"
-git clone https://github.com/zsh-users/zsh-syntax-highlighting.git "$_zshplugins"
-git clone https://github.com/zsh-users/zsh-autosuggestions.git "$_zshplugins"
-git clone https://github.com/zsh-users/zsh-history-substring-search.git "$_zshplugins"
-git clone https://github.com/agkozak/zsh-z.git "$_zshplugins"
 
-# git clone https://github.com/catppuccin/sddm.git
-# sudo cp -r "./sddm/src/catppuccin-mocha" "/usr/share/sddm/themes/" 
-# sudo cp "./configs/sddm/sddm.conf" "/etc/sddm.conf"
-# sudo rm -r sddm
+read -p "Install zsh config and plugins? (y/n)" type
+if [ $type = "y" ]; then
+  echo "Copying zsh config" && cp "configs/zsh/.zshrc" "$_home"
+  echo "Cloing zsh plugins from Github"
+  git clone --depth=1 https://github.com/romkatv/powerlevel10k.git "$_zshplugins/powerlevel/"
+  git clone https://github.com/zsh-users/zsh-syntax-highlighting.git "$_zshplugins"
+  git clone https://github.com/zsh-users/zsh-autosuggestions.git "$_zshplugins"
+  git clone https://github.com/zsh-users/zsh-history-substring-search.git "$_zshplugins"
+  git clone https://github.com/agkozak/zsh-z.git "$_zshplugins"
+fi
+
+read -p "Install catppuccin theme for SDDM? (y/n)" type
+if [ $type = "y" ]; then
+  git clone https://github.com/catppuccin/sddm.git
+  sudo cp -r "./sddm/src/catppuccin-mocha" "/usr/share/sddm/themes/" 
+  sudo cp "./configs/sddm/sddm.conf" "/etc/sddm.conf"
+  sudo rm -r sddm
+fi
 
 fastfetch
