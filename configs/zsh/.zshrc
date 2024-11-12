@@ -5,7 +5,7 @@ SAVEHIST=1000
 bindkey -v
 # End of lines configured by zsh-newuser-install
 # The following lines were added by compinstall
-zstyle :compinstall filename '/home/bjorn/.zshrc'
+zstyle :compinstall filename '~/.zshrc'
 
 autoload -Uz compinit
 compinit
@@ -23,8 +23,11 @@ if [ -d "$HOME/.local/bin" ] ; then
 	PATH="$HOME/.local/bin:$PATH"
 fi
 
-source /home/bjorn/.local/share/zsh-plug/powerlevel10k/powerlevel10k.zsh-theme
-source /home/bjorn/.local/share/zsh-plug/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source ~/.local/zsh-plugins/powerlevel/powerlevel10k.zsh-theme
+source ~/.local/zsh-plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source ~/.local/zsh-plugins/zsh-z/zsh-z.plugin.zsh
+source ~/.local/zsh-plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+source ~/.local/zsh-plugins/zsh-history-substring-search/zsh-history-substring-search.zsh
 
 bindkey "^[[3~" delete-char
 
@@ -34,5 +37,7 @@ bindkey "^[[3~" delete-char
 git-cmp() {
   git add . && git commit -m "$1" && git push
 }
+
+alias "ranger"=". ranger"
 
 export EDITOR='nvim'
