@@ -25,8 +25,10 @@ _polybar="$HOME/.config/polybar"
 _picom="$HOME/.config/picom"
 _wallpaper="$HOME/pictures/"
 _home="$HOME/"
+_neovim="$HOME/.config/nvim"
+_zshplugins="$HOME/.local/zsh-plugins/"
 
-mkdir -p "$_i3" "$_rofi" "$_rofi_theme" "$_polybar" "$_picom" "$_kitty" "$_wallpaper"
+mkdir -p "$_i3" "$_rofi" "$_rofi_theme" "$_polybar" "$_picom" "$_kitty" "$_wallpaper" "$_config"
 echo "Created directories"
 
 # Configs
@@ -44,11 +46,18 @@ elif [ $type = "2" ]; then
   sudo cp "./configs/xorg.conf.d/desktop/40-libinput.conf" "/usr/share/X11/xorg.conf.d/40-libinput.conf"
 fi
 
-cp "configs/kitty/"* "$_kitty" && echo  "Copying kitty config"
-cp "configs/rofi/config.rasi" "$_rofi" && echo "Copying rofi config"
-cp -r "configs/rofi/themes/"* "$_rofi_theme" && echo  "Copying rofi theme"
-cp "wallpapers/cat_wall.png" "$_wallpaper" && echo  "Copying wallpaper"
-# cp "configs/zsh/.zshrc" "$_home" && echo  "Copying zsh config"
+echo "Copying kitty config" && cp "configs/kitty/"* "$_kitty" 
+echo "Copying rofi config" && cp "configs/rofi/config.rasi" "$_rofi" 
+echo "Copying rofi theme" && -r "configs/rofi/themes/"* "$_rofi_theme" 
+echo "Copying wallpaper" && cp "wallpapers/cat_wall.png" "$_wallpaper" 
+echo "Cloning Neovim config and removing .git file" && git clone git@github.com:bjorntp/neovim.git "$_neovim" && rm "$_neovim/.git"
+echo "Copying zsh config" && cp "configs/zsh/.zshrc" "$_home"
+echo "Cloing zsh plugins from Github"
+git clone --depth=1 https://github.com/romkatv/powerlevel10k.git "$_zshplugins/powerlevel/"
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git "$_zshplugins"
+git clone https://github.com/zsh-users/zsh-autosuggestions.git "$_zshplugins"
+git clone https://github.com/zsh-users/zsh-history-substring-search.git "$_zshplugins"
+git clone https://github.com/agkozak/zsh-z.git "$_zshplugins"
 
 # git clone https://github.com/catppuccin/sddm.git
 # sudo cp -r "./sddm/src/catppuccin-mocha" "/usr/share/sddm/themes/" 
