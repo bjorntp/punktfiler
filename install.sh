@@ -11,7 +11,7 @@ else
   exit
 fi
 
-sudo systemctl enable sddm
+sudo systemctl enable gdm
 sudo systemctl enable NetworkManager
 sudo systemctl enable bluetooth
 sudo chsh -s /bin/zsh $USER
@@ -61,14 +61,6 @@ if [ $type = "y" ]; then
   git clone https://github.com/zsh-users/zsh-autosuggestions.git "$_zshplugins"
   git clone https://github.com/zsh-users/zsh-history-substring-search.git "$_zshplugins"
   git clone https://github.com/agkozak/zsh-z.git "$_zshplugins"
-fi
-
-read -p "Install catppuccin theme for SDDM? (y/n)" type
-if [ $type = "y" ]; then
-  git clone https://github.com/catppuccin/sddm.git
-  sudo cp -r "./sddm/src/catppuccin-mocha" "/usr/share/sddm/themes/" 
-  sudo cp "./configs/sddm/sddm.conf" "/etc/sddm.conf"
-  sudo rm -r sddm
 fi
 
 fastfetch
