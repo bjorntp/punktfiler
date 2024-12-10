@@ -28,7 +28,7 @@ _home="$HOME/"
 _neovim="$HOME/.config/nvim"
 _zshplugins="$HOME/.local/zsh-plugins/"
 
-mkdir -p -v "$_i3" "$_rofi" "$_rofi_theme" "$_polybar" "$_picom" "$_kitty" "$_wallpaper" "$_config"
+mkdir -p -v "$_i3" "$_rofi" "$_rofi_theme" "$_polybar" "$_picom" "$_kitty" "$_wallpaper" "$_config" "$_zshplugins"
 echo "Created directories"
 
 # Configs
@@ -57,10 +57,10 @@ if [ $type = "y" ]; then
   echo "Copying zsh config" && cp "configs/zsh/.zshrc" "$_home"
   echo "Cloing zsh plugins from Github"
   git clone --depth=1 https://github.com/romkatv/powerlevel10k.git "$_zshplugins/powerlevel/"
-  git clone https://github.com/zsh-users/zsh-syntax-highlighting.git "$_zshplugins"
-  git clone https://github.com/zsh-users/zsh-autosuggestions.git "$_zshplugins"
-  git clone https://github.com/zsh-users/zsh-history-substring-search.git "$_zshplugins"
-  git clone https://github.com/agkozak/zsh-z.git "$_zshplugins"
+  git clone https://github.com/zsh-users/zsh-syntax-highlighting.git "$_zshplugins/zsh-syntax-highlighting/"
+  git clone https://github.com/zsh-users/zsh-autosuggestions.git "$_zshplugins/zsh-autosuggestions/"
+  git clone https://github.com/zsh-users/zsh-history-substring-search.git "$_zshplugins/zsh-history-substring-search/"
+  git clone https://github.com/agkozak/zsh-z.git "$_zshplugins/zsh-z"
 fi
 
 fastfetch
