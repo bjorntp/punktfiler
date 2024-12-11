@@ -27,22 +27,25 @@ _wallpaper="$HOME/pictures/"
 _home="$HOME/"
 _neovim="$HOME/.config/nvim"
 _zshplugins="$HOME/.local/zsh-plugins/"
+_nvim="$HOME/.config/nvim"
 
-mkdir -p -v "$_i3" "$_rofi" "$_rofi_theme" "$_polybar" "$_picom" "$_kitty" "$_wallpaper" "$_config" "$_zshplugins"
+mkdir -p -v "$_i3" "$_rofi" "$_rofi_theme" "$_polybar" "$_picom" "$_kitty" "$_wallpaper" "$_config" "$_zshplugins" "$_nvim"
 echo "Created directories"
 
 # Configs
 if [ $type = "1" ]; then
   echo "Running laptop installation"
   echo "Copying i3 config" && cp -r "configs/i3/laptop/"* "$_i3"
-  echo  "Copying polybar config and scripts" && cp -r "configs/polybar/laptop/"* "$_polybar"
-  echo  "Copying picom config" && cp "configs/picom/laptop/picom.conf" "$_picom"
+  echo "Copying polybar config and scripts" && cp -r "configs/polybar/laptop/"* "$_polybar"
+  echo "Copying picom config" && cp "configs/picom/laptop/picom.conf" "$_picom"
+  echo "Cloning Neovim config" && git clone https://github.com/bjorntp/neovim "$_nvim"
   sudo cp "./configs/xorg.conf.d/laptop/40-libinput.conf" "/usr/share/X11/xorg.conf.d/40-libinput.conf"
 elif [ $type = "2" ]; then
   echo "Running desktop installation"
   echo "Copying i3 config" && cp -r "configs/i3/desktop/"* "$_i3"
-  echo  "Copying polybar config and scripts" && cp -r "configs/polybar/desktop/"* "$_polybar"
-  echo  "Copying picom config" && cp "configs/picom/desktop/picom.conf" "$_picom"
+  echo "Copying polybar config and scripts" && cp -r "configs/polybar/desktop/"* "$_polybar"
+  echo "Copying picom config" && cp "configs/picom/desktop/picom.conf" "$_picom"
+  echo "Cloning Neovim config" && git clone https://github.com/bjorntp/neovim "$_nvim"
   sudo cp "./configs/xorg.conf.d/desktop/40-libinput.conf" "/usr/share/X11/xorg.conf.d/40-libinput.conf"
 fi
 
