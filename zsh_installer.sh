@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 sudo chsh -s /bin/zsh $USER
+_home="$HOME"
 _zshplugins="$HOME/.local/zsh-plugins/"
 
 mkdir -p -v "$_zshplugins"
