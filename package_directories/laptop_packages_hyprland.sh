@@ -1,3 +1,2 @@
 #!/usr/bin/env bash
-
-sudo pacman -S --noconfirm --disable-download-timeout gnome-keyring seahorse brightnessctl hyprland hyprpaper networkmanager waybar
+sudo pacman -S --noconfirm --disable-download-timeout brightnessctl hyprland hyprpaper networkmanager waybar wl-clipboard
