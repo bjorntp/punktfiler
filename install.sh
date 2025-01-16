@@ -79,6 +79,7 @@ elif [ $computer_type = "2" ]; then
   fi
 fi
 
+echo "Setting zathura as default pdf viewer" && xdg-mime default org.pwmt.zathura.desktop application/pdf
 echo "Cloning Neovim config" && git clone https://github.com/bjorntp/neovim "$_nvim"
 echo "Copying kitty config" && cp "configs/kitty/"* "$_kitty" 
 echo "Copying rofi config" && cp "configs/rofi/config.rasi" "$_rofi" 
