@@ -28,6 +28,7 @@ window#waybar {
 /* Workspace Buttons */
 #workspaces button label {
   color: #689d6a;
+  padding-bottom: 3px;
 }
 
 #workspaces button.focused label {
@@ -35,9 +36,9 @@ window#waybar {
 }
 
 #workspaces button.active {
+  padding-bottom: 1px;
   color: #fabd2f;
-  border-bottom: 4px solid #fabd2f;
-  margin-top: 4px;
+  border-bottom: 3px solid #fabd2f;
 }
 
 #workspaces button.focused {
