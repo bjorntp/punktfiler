@@ -10,16 +10,19 @@ _picom="$HOME/.config/picom"
 _wallpaper="$HOME/pictures/"
 _home="$HOME/"
 _waybar="$HOME/.config/waybar/"
-_hypr="$HYPR/.config/hypr"
+_hypr="$HOME/.config/hypr"
 
 read -p "Enter 1 for laptop or 2 for desktop: " computer_type
 read -p "Enter 1 for hyprland or 2 for i3: " wm_type 
+mkdir -p -v "$_rofi" "$_rofi_theme" "$_kitty" "$_wallpaper" "$_config" "$_nvim"
 
 if [ $computer_type = "1" ]; then
   if [ $wm_type = "1" ]; then
     ./package_directories/laptop_packages_hyprland.sh
-  elif $wm_type = "2" ]; then
+    mkdir -p -v "$_hypr" "$_waybar"
+  elif [ $wm_type = "2" ]; then
     ./package_directories/laptop_packages_i3.sh
+    mkdir -p -v "$_i3" "$_polybar" "$_picom" 
   else 
     echo "Invalid input, exiting"
     exit
@@ -27,8 +30,10 @@ if [ $computer_type = "1" ]; then
 elif [ $computer_type = "2" ]; then
   if [ $wm_type = "1" ]; then
     ./package_directories/desktop_packages_hyprland.sh
-  elif $wm_type = "2" ]; then
-    ./package_directories/desktop.sh
+    mkdir -p -v "$_hypr" "$_waybar"
+  elif [ $wm_type = "2" ]; then
+    ./package_directories/desktop_packages_i3.sh
+    mkdir -p -v "$_i3" "$_polybar" "$_picom" 
   else 
     echo "Invalid input, exiting"
     exit
@@ -38,6 +43,8 @@ else
   exit
 fi
 
+./package_directories/universal_packages.sh
+
 sudo systemctl enable NetworkManager
 sudo systemctl enable bluetooth
 sudo chsh -s /bin/zsh $USER
@@ -45,15 +52,13 @@ sudo chsh -s /bin/zsh $USER
 #  computer_type 1 = laptop, 2 = desktop
 #  wm_type 1 = hyprland, 2 = i3 
 
-mkdir -p -v "$_rofi" "$_rofi_theme" "$_kitty" "$_wallpaper" "$_config" "$_nvim"
-mkdir -p -v "$_i3" "$_polybar" "$_picom" 
 echo "Created directories"
 
 
 if [ $computer_type = "1" ]; then
   if [ $wm_type = "1" ]; then # Laptop hyprland
     echo "Running laptop hyprland installation"
-    echo "Copying hyprland config" && cp -r "configs/hypr/laptop"* "$_hypr"
+    echo "Copying hyprland config" && cp -r "configs/hypr/laptop/"* "$_hypr"
     echo "Copying waybar config" && cp -r "configs/waybar/"* "$_waybar"
   elif [ $wm_type = "2" ]; then # Laptop i3
     echo "Running laptop i3 installation"
@@ -84,6 +89,6 @@ echo "Cloning Neovim config" && git clone https://github.com/bjorntp/neovim "$_n
 echo "Copying kitty config" && cp "configs/kitty/"* "$_kitty" 
 echo "Copying rofi config" && cp "configs/rofi/config.rasi" "$_rofi" 
 echo "Copying rofi theme" && -r "configs/rofi/themes/"* "$_rofi_theme" 
-echo "Copying wallpaper" && cp "wallpapers/cat_wall.png" "$_wallpaper" 
+echo "Copying wallpapers" && cp "wallpapers/*" "$_wallpaper" 
 
 fastfetch
