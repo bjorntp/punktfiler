@@ -11,10 +11,11 @@ _wallpaper="$HOME/pictures/"
 _home="$HOME/"
 _waybar="$HOME/.config/waybar/"
 _hypr="$HOME/.config/hypr"
+_nvim="$HOME/.config/nvim"
 
 read -p "Enter 1 for laptop or 2 for desktop: " computer_type
 read -p "Enter 1 for hyprland or 2 for i3: " wm_type 
-mkdir -p -v "$_rofi" "$_rofi_theme" "$_kitty" "$_wallpaper" "$_config" "$_nvim"
+mkdir -p -v "$_rofi" "$_rofi_theme" "$_kitty" "$_wallpaper" "$_config"
 
 if [ $computer_type = "1" ]; then
   if [ $wm_type = "1" ]; then
@@ -88,7 +89,7 @@ echo "Setting zathura as default pdf viewer" && xdg-mime default org.pwmt.zathur
 echo "Cloning Neovim config" && git clone https://github.com/bjorntp/neovim "$_nvim"
 echo "Copying kitty config" && cp "configs/kitty/"* "$_kitty" 
 echo "Copying rofi config" && cp "configs/rofi/config.rasi" "$_rofi" 
-echo "Copying rofi theme" && -r "configs/rofi/themes/"* "$_rofi_theme" 
+echo "Copying rofi theme" && cp -r "configs/rofi/themes/"* "$_rofi_theme" 
 echo "Copying wallpapers" && cp "wallpapers/*" "$_wallpaper" 
 
 fastfetch
