@@ -28,22 +28,34 @@ window#waybar {
 /* Workspace Buttons */
 #workspaces button label {
   color: #689d6a;
-  padding-bottom: 3px;
+}
+
+
+#workspaces button {
+  color: #689d6a;
+  border-bottom: 4px solid transparent;
 }
 
 #workspaces button.focused label {
   color: #1d2021;
 }
 
-#workspaces button.active {
-  padding-bottom: 1px;
-  color: #fabd2f;
-  border-bottom: 3px solid #fabd2f;
+#workspaces button.visible {
+  border-bottom: 4px solid #689d6a;
 }
 
 #workspaces button.focused {
   background: #689d6a;
+  border: none;
+  border-bottom: 4px solid #689d6a;
 }
+
+#workspaces button.active {
+  color: #fabd2f;
+  border-bottom: 4px solid #fabd2f;
+}
+
+
 
 #mode {
   background-color: #cc241d;
