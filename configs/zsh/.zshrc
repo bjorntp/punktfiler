@@ -38,6 +38,11 @@ git-cmp() {
   git add . && git commit -m "$1" && git push
 }
 
+# Find files arg1 is path, arg2 is a regular expression. Not case sensitive. Does not show error messages
+fdshort() {
+  find $1 -iregex $2 2>/dev/null
+}
+
 alias "ranger"=". ranger"
 
 export EDITOR='nvim'
