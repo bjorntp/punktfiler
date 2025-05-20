@@ -3,8 +3,8 @@
 # Configuration
 THEME_STATE_DIR="$HOME/.cache/theme"
 THEME_STATE_FILE="$THEME_STATE_DIR/state"
-KITTY_CONFIG_DIR="$HOME/.config/kitty"
 GTK_CONFIG_DIR="$HOME/.config/gtk-3.0"
+ROFI_CONFIG_DIR="$HOME/.config/rofi"
 
 # Create theme state directory and file if they don't exist (default to dark)
 if [ ! -d "$THEME_STATE_DIR" ]; then
@@ -32,9 +32,15 @@ CURRENT_THEME=$(cat "$THEME_STATE_FILE")
 if [ "$CURRENT_THEME" = "dark" ]; then
     NEW_THEME="light"
     GTK_DARK_VALUE="0"
+    cp $ROFI_CONFIG_DIR/config.rasi.light $ROFI_CONFIG_DIR/config.rasi
+    hyprctl hyprpaper preload "~/pictures/gbarchlight.png"
+    hyprctl hyprpaper wallpaper "eDP-1,~/pictures/gbarchlight.png"
 else
     NEW_THEME="dark"
     GTK_DARK_VALUE="1"
+    cp $ROFI_CONFIG_DIR/config.rasi.dark $ROFI_CONFIG_DIR/config.rasi
+    hyprctl hyprpaper preload "~/pictures/gbarchdark.png"
+    hyprctl hyprpaper wallpaper "eDP-1,~/pictures/gbarchdark.png"
 fi
 
 # Save new theme state
