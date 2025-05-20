@@ -7,4 +7,6 @@ if status is-interactive
 
     # Enable vim key bindings
     fish_vi_key_bindings
+
+    set fish_greeting
 end
