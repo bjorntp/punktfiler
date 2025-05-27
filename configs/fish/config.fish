@@ -7,6 +7,9 @@ if status is-interactive
     # Add ~/.local/bin to PATH
     set -x PATH $HOME/.local/bin $PATH
 
+    # Set editor
+    set -gx EDITOR nvim
+
     # Enable vim key bindings
     fish_vi_key_bindings
 
