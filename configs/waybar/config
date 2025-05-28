@@ -39,7 +39,7 @@
     },
     "clock": {
         // Human Friendly
-        "format-alt": "{:%A, %B %d at %I:%M %p}",
+        "format-alt": "{:%A, %B %d at %H:%M}",
         // 24hr Robot Friendly
         "format": "{:%Y-%m-%d - %H:%M}"
     },
@@ -66,8 +66,8 @@
         "format-muted": "",
         "format-icons": {
             "headphones": "",
-            "handsfree": "",
-            "headset": "",
+            "handsfree": "",
+            "headset": "",
             "phone": "",
             "portable": "",
             "car": "",
