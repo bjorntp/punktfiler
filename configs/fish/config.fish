@@ -3,6 +3,7 @@ if status is-interactive
     alias ls='eza --no-time'
     alias lg='lazygit'
     alias cat='bat'
+    alias bt='bluetui'
 
     # Add ~/.local/bin to PATH
     set -x PATH $HOME/.local/bin $PATH
