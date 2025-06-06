@@ -1,3 +1,0 @@
-Directory: /usr/share/X11/xorg.conf.d/40-libinput.conf
-
-Only for laptop to fix touchpad (natural scrolling, three and two finger click)
