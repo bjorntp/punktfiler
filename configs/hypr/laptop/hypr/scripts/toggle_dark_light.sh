@@ -34,13 +34,13 @@ if [ "$CURRENT_THEME" = "dark" ]; then
     GTK_DARK_VALUE="0"
     cp $ROFI_CONFIG_DIR/config.rasi.light $ROFI_CONFIG_DIR/config.rasi
     hyprctl hyprpaper preload "~/pictures/gbarchlight.png"
-    hyprctl hyprpaper wallpaper "eDP-1,~/pictures/gbarchlight.png"
+    hyprctl hyprpaper wallpaper ",~/pictures/gbarchlight.png"
 else
     NEW_THEME="dark"
     GTK_DARK_VALUE="1"
     cp $ROFI_CONFIG_DIR/config.rasi.dark $ROFI_CONFIG_DIR/config.rasi
     hyprctl hyprpaper preload "~/pictures/gbarchdark.png"
-    hyprctl hyprpaper wallpaper "eDP-1,~/pictures/gbarchdark.png"
+    hyprctl hyprpaper wallpaper ",~/pictures/gbarchdark.png"
 fi
 
 # Save new theme state
