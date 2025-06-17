@@ -1,4 +1,5 @@
 # Dotfiles
-Dotfiles for my preferred i3 setup which is mostly made up of completed themes with minor changes.
 
-For i3, alacritty, polybar & rofi
+My dotfiles for my archinstall with Hyprland.
+
+Install stow and run the script to link the dotfiles.

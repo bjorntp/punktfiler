@@ -1,0 +1,74 @@
+{
+    "layer": "top",
+    "position": "top",
+    "height": 32,
+    "modules-left": ["hyprland/workspaces", "sway/workspaces"],
+    "modules-center": ["hyprland/window", "sway/window"],
+    "modules-right": [ "pulseaudio", "network", "memory", "battery", "tray", "clock"],
+
+    "idle_inhibitor": {
+        "format": "{icon}",
+        "format-icons": {
+            "activated": "",
+            "deactivated": ""
+        }
+    },
+
+    "sway/mode": {
+        "format": "<span style=\"italic\">{}</span>"
+    },
+    "tray": {
+        "icon-size": 14,
+        "spacing": 10
+    },
+    "clock": {
+        // Human Friendly
+        "format-alt": "{:%A, %B %d at %H:%M}",
+        // 24hr Robot Friendly
+        "format": "{:%Y-%m-%d - %H:%M}"
+    },
+    "cpu": {
+        "format": "{usage}% ",
+        "on-click": "kitty -t 'Floating Terminal' -e htop"
+    },
+
+    "memory": {
+        "interval": 30,
+        "format": "{used:0.1f}/{total:0.1f}G ",
+        "on-click":"pgrep -x htop && pkill -x htop || kitty --class htop -e htop &"
+    },
+
+    "network": {
+        // "interface": "wlp2s0", // (Optional) To force the use of this interface
+        "format-wifi": "{essid} ({signalStrength}%) ",
+        "format-ethernet": "{ifname}: {ipaddr} ",
+        "format-disconnected": "Disconnected ⚠",
+        "on-click":"pgrep -x nmtui && pkill -x nmtui || kitty --class nmtui -e nmtui &"
+    },
+    "pulseaudio": {
+        //"scroll-step": 1,
+        "format": "{volume}% {icon}",
+        "format-bluetooth": "{volume}% {icon}",
+        "format-muted": "",
+        "format-icons": {
+            "headphones": "",
+            "handsfree": "",
+            "headset": "",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": ["", ""]
+        },
+        "on-click": "pgrep -x pavucontrol && pkill -x pavucontrol || pavucontrol &"
+    },
+    "custom/music": {
+    "format": "  {}",
+    "max-length": 60,
+    "interval": 5, // Remove this if your script is endless and write in loop
+    "exec": "$HOME/.config/waybar/mediaplayer.sh 2> /dev/null", // Script in resources folder
+	"tooltip": false,
+	"on-click": "playerctl play-pause",
+	"on-scroll-up": "playerctl previous",
+	"on-scroll-down": "playerctl next"
+    }
+}
