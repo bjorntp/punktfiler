@@ -44,5 +44,6 @@ fdshort() {
 }
 
 alias "ranger"=". ranger"
+alias "lg"="lazygit"
 
 export EDITOR='nvim'
