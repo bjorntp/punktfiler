@@ -1,0 +1,16 @@
+[urgency=low]
+background-color=#f2e5bc
+text-color=#3c3836
+border-color=#458588
+default-timeout=10000
+
+[urgency=normal]
+background-color=#f2e5bc
+text-color=#3c3836
+border-color=#427b58
+default-timeout=10000
+
+[urgency=critical]
+background-color=#f2e5bc
+text-color=#3c3836
+border-color=#cc241d
