@@ -6,6 +6,7 @@ WALLPAPER_STATE_FILE="$THEME_STATE_DIR/wallpaper_state"
 GTK_CONFIG_DIR="$HOME/.config/gtk-3.0"
 ROFI_CONFIG_DIR="$HOME/.config/rofi"
 HYPRPAPER_CONFIG="$HOME/.config/hypr/hyprpaper.conf"
+MAKO_CONFIG_DIR="$HOME/.config/mako"
 
 # Create theme state directory and file if they don't exist (default to dark)
 if [ ! -d "$THEME_STATE_DIR" ]; then
@@ -37,11 +38,13 @@ if [ "$CURRENT_THEME" = "dark" ]; then
     GTK_DARK_VALUE="0"
     WALLPAPER_PATH="$HOME/pictures/gbarchlight.png"
     cp "$ROFI_CONFIG_DIR/config.rasi.light" "$ROFI_CONFIG_DIR/config.rasi"
+    cp "$MAKO_CONFIG_DIR/config-light" "$MAKO_CONFIG_DIR/config"
 else
     NEW_THEME="dark"
     GTK_DARK_VALUE="1"
     WALLPAPER_PATH="$HOME/pictures/gbarchdark.png"
     cp "$ROFI_CONFIG_DIR/config.rasi.dark" "$ROFI_CONFIG_DIR/config.rasi"
+    cp "$MAKO_CONFIG_DIR/config-dark" "$MAKO_CONFIG_DIR/config"
 fi
 
 # Save new theme state and wallpaper path
@@ -83,6 +86,8 @@ if command -v gsettings &> /dev/null; then
         gsettings set org.gnome.desktop.interface color-scheme 'prefer-light' 2>/dev/null || true
     fi
 fi
+
+pkill mako && mako &
 
 # Update Hyprland environment variables 
 hyprctl keyword env "THEME_PREFERENCE=$NEW_THEME" 2>/dev/null || true
