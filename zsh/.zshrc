@@ -35,8 +35,12 @@ bindkey "^[[3~" delete-char
 
 ## Aliases
 
+tw() {
+  typst watch "$1" --open zathura /tmp/zathura.pdf
+}
+
 # Find files arg1 is path, arg2 is a regular expression. Not case sensitive. Does not show error messages
-fdshort() {
+fs() {
   find $1 -iregex $2 2>/dev/null
 }
 
