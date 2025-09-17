@@ -1,16 +1,17 @@
 [urgency=low]
-background-color=#32302f
-text-color=#d4be98
-border-color=#7daea3
+background-color=#1d2021
+text-color=#ebdbb2
+border-color=#458588
 default-timeout=10000
 
 [urgency=normal]
-background-color=#32302f
-text-color=#d4be98
-border-color=#89b482
+background-color=#1d2021
+text-color=#ebdbb2
+border-color=#458588
 default-timeout=10000
 
 [urgency=critical]
-background-color=#32302f
-text-color=#d4be98
-border-color=#ea6962
+background-color=#1d2021
+text-color=#ebdbb2
+border-color=#458588
+default-timeout=10000
