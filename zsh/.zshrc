@@ -36,7 +36,7 @@ bindkey "^[[3~" delete-char
 ## Aliases
 
 tw() {
-  typst watch "$1" --open zathura /tmp/zathura.pdf
+  typst watch "$1" --open zathura /tmp/"$1".pdf
 }
 
 # Find files arg1 is path, arg2 is a regular expression. Not case sensitive. Does not show error messages
